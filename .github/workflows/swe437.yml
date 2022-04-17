@@ -17,10 +17,10 @@ jobs:
         run: git clone https://github.com/Huawei/vCenter_Plugin_DME
       - name: SWE_437 Compiling
         shell: bash
-        run: mvn test-compile -pl ./dmestore-service/dmestore-service -am
+        run: mvn test-compile -pl dmestore-service -am
       - name: SWE_437 Check Without NonDex
         shell: bash
-        run:  mvn -pl ./dmestore-service/dmestore-service test -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
+        run:  mvn -pl dmestore-service test -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
       - name: SWE_437 Check With NonDex
         shell: bash
-        run: mvn -pl -DnondexRuns=10 ./dmestore-service/dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
+        run: mvn -pl -DnondexRuns=10 dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
