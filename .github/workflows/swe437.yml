@@ -24,7 +24,7 @@ jobs:
         run: git clone https://github.com/spring-projects/spring-data-r2dbc
       - name: Going to Test Project
         shell: bash
-        run: cd spring-projects/spring-data-r2dbc
+        run: cd spring-data-r2dbc
       - name: SWE_437 Compiling
         shell: bash
         run: mvn test-compile -pl spring-data-r2dbc -am
