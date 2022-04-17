@@ -24,7 +24,7 @@ jobs:
         run: git clone https://github.com/dropwizard/dropwizard
       - name: Going to Test Project
         shell: bash
-        run: cd dropwizard
+        run: cd dropwizard/dropwizard
       - name: SWE_437 Compiling
         shell: bash
         run: mvn test-compile -pl dropwizard-health -am
