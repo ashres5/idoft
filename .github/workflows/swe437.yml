@@ -14,7 +14,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn -B package --file auto-update-dataset/java/pom.xml
       - name: Clone test
         run: git clone https://github.com/Huawei/vCenter_Plugin_DME
       - name: SWE_437 Compiling
