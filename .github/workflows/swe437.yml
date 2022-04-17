@@ -22,6 +22,9 @@ jobs:
       - name: Cloning test
         shell: bash
         run: git clone https://github.com/Huawei/vCenter_Plugin_DME
+      - name: version
+        shell: bash
+        run: git rev-parse HEAD
       - name: Going to Test Project
         shell: bash
         run: cd vCenter_Plugin_DME/dmestore-service
