@@ -6,6 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    include:
+      - remote :'https://github.com/Huawei/vCenter_Plugin_DME'
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 11
@@ -13,12 +16,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Going to home
-        run: cd ~
-      - name: Clone test
-        run: git clone https://github.com/Huawei/vCenter_Plugin_DME
-      - name: Change directory
-        run: cd dmestore-service
       - name: SWE_437 Compiling
         shell: bash
         run: mvn test-compile -pl dmestore-service -am
