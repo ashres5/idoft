@@ -16,6 +16,12 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+      - name: Cloning test
+        script:
+          - mkdir test
+          - cd test
+          - clone dmestore-service
+          - cd dmestore-service
       - name: SWE_437 Compiling
         shell: bash
         run: mvn test-compile -pl dmestore-service -am
