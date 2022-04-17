@@ -27,7 +27,7 @@ jobs:
         run: cd spring-data-r2dbc
       - name: SWE_437 Compiling
         shell: bash
-        run: mvn test-compile -pl spring-data-r2dbc -am
+        run: mvn test-compile -pl spring-data-r2dbc -am -Drat.skip
       - name: SWE_437 Check Without NonDex
         shell: bash
         run:  mvn -pl spring-data-r2dbc test -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited
