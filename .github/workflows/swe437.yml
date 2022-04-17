@@ -21,19 +21,19 @@ jobs:
         run: cd test
       - name: Cloning test
         shell: bash
-        run: git clone https://github.com/Huawei/vCenter_Plugin_DME
+        run: git clone https://github.com/spring-projects/spring-data-r2dbc
       - name: version
         shell: bash
-        run: git checkout fa077ef3c8ee052afc01084bc5aaae7c3b4518a4
+        run: git checkout c1a2be67be5da684f13a9367e00029ce09c98f42
       - name: Going to Test Project
         shell: bash
-        run: cd vCenter_Plugin_DME/dmestore-service
+        run: cd spring-projects/spring-data-r2dbc
       - name: SWE_437 Compiling
         shell: bash
-        run: mvn test-compile -pl dmestore-service -am
+        run: mvn test-compile -pl spring-data-r2dbc -am
       - name: SWE_437 Check Without NonDex
         shell: bash
-        run:  mvn -pl dmestore-service test -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
+        run:  mvn -pl spring-data-r2dbc test -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited
       - name: SWE_437 Check With NonDex
         shell: bash
-        run: mvn -pl -DnondexRuns=10 dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
+        run: mvn -pl -DnondexRuns=10 spring-data-r2dbc edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited
