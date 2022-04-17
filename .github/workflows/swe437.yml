@@ -21,7 +21,7 @@ jobs:
         run: cd test
       - name: Cloning test
         shell: bash
-        run: clone dmestore-service
+        run: git clone dmestore-service
       - name: Going to specific test directory
         shell: bash
         run: cd dmestore-service
