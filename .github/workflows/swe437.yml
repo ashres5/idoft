@@ -21,16 +21,16 @@ jobs:
         run: cd test
       - name: Cloning test
         shell: bash
-        run: git clone https://github.com/spring-projects/spring-data-r2dbc
+        run: git clone https://github.com/Huawei/vCenter_Plugin_DME
       - name: Going to Test Project
         shell: bash
-        run: cd spring-data-r2dbc
+        run: cd vCenter_Plugin_DME
       - name: SWE_437 Compiling
         shell: bash
-        run: mvn test-compile -pl spring-data-r2dbc -am -Drat.skip
+        run: mvn test-compile -pl dmestore-service -am
       - name: SWE_437 Check Without NonDex
         shell: bash
-        run:  mvn -pl spring-data-r2dbc test -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited
+        run:  mvn -pl dmestore-service test -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
       - name: SWE_437 Check With NonDex
         shell: bash
-        run: mvn -pl -DnondexRuns=10 spring-data-r2dbc edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited
+        run: mvn -pl -DnondexRuns=10 dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup
