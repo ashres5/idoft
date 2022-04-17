@@ -24,7 +24,7 @@ jobs:
         run: git clone https://github.com/Huawei/vCenter_Plugin_DME
       - name: version
         shell: bash
-        run: git rev-parse HEAD
+        run: git checkout fa077ef3c8ee052afc01084bc5aaae7c3b4518a4
       - name: Going to Test Project
         shell: bash
         run: cd vCenter_Plugin_DME/dmestore-service
