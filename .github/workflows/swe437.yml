@@ -22,9 +22,6 @@ jobs:
       - name: Cloning test
         shell: bash
         run: git clone https://github.com/Huawei/vCenter_Plugin_DME
-      - name: Going to specific test directory
-        shell: bash
-        run: cd dmestore-service
       - name: SWE_437 Compiling
         shell: bash
         run: mvn test-compile -pl dmestore-service -am
