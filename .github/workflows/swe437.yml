@@ -22,9 +22,6 @@ jobs:
       - name: Cloning test
         shell: bash
         run: git clone https://github.com/spring-projects/spring-data-r2dbc
-      - name: version
-        shell: bash
-        run: git checkout c1a2be67be5da684f13a9367e00029ce09c98f42
       - name: Going to Test Project
         shell: bash
         run: cd spring-projects/spring-data-r2dbc
