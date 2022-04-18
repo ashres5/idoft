@@ -18,7 +18,7 @@ jobs:
         run: git clone https://github.com/espertechinc/esper
       - name: Going to Test Project
         shell: bash
-        run: cd espertechinc/esper
+        run: cd esper
       - name: 'SWE_437 Compiling'
         shell: bash
         run: mvn test-compile -pl regression-run -am
