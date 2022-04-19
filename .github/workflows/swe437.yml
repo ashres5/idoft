@@ -14,29 +14,27 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-change:
+  change:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloning test
+        run: git clone https://github.com/espertechinc/esper
+      - name: Going to Test Project
+        run: cd esper
+      - name: Point directory
+        run:  pwd
+      - name: Show current directory files
+        run:  ls
+      - name: Print current commint
+        run:  git rev-parse HEAD
 
-  runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Cloning test
-      run: git clone https://github.com/espertechinc/esper
-    - name: Going to Test Project
-      run: cd esper
-    - name: Point directory
-      run:  pwd
-    - name: Show current directory files
-      run:  ls
-    - name: Print current commint
-      run:  git rev-parse HEAD
-
-test:
-  runs-on: ubuntu-latest
-
-  steps:
-    - name: 'SWE_437 Compiling'
-      run: mvn test-compile -pl regression-run -am
-    - name: 'SWE_437 Check Without NonDex'
-      run:  mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -Drat.skip
-    - name: 'SWE_437 Check With NonDex'
-      run: mvn -pl regression-run dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF
+    steps:
+      - name: 'SWE_437 Compiling'
+        run: mvn test-compile -pl regression-run -am
+      - name: 'SWE_437 Check Without NonDex'
+        run:  mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -Drat.skip
+      - name: 'SWE_437 Check With NonDex'
+        run: mvn -pl regression-run dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF
