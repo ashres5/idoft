@@ -14,29 +14,18 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Cloning test
-        shell: bash
         run: git clone https://github.com/espertechinc/esper
       - name: Going to Test Project
-        shell: bash
         run: cd esper
       - name: Point directory
-        shell: bash
         run:  pwd
       - name: Show current directory files
-        shell: bash
         run:  ls
-      - name: Going to Test Project
-        shell: bash
-        run: cd esper
       - name: Print current commint
-        shell: bash
         run:  git rev-parse HEAD
       - name: 'SWE_437 Compiling'
-        shell: bash
         run: mvn test-compile -pl regression-run -am
       - name: 'SWE_437 Check Without NonDex'
-        shell: bash
         run:  mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -Drat.skip
       - name: 'SWE_437 Check With NonDex'
-        shell: bash
         run: mvn -pl regression-run dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF
