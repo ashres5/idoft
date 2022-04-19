@@ -22,27 +22,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Test Project Repo
-        run: git clone https://github.com/google/guava
+        run: git clone https://github.com/dropwizard/dropwizard
 
-      - run: cd guava
+      - run: cd dropwizard
 
       - name: Checkout project
         uses: actions/checkout@v2
         with:
-          repository: google/guava
-          ref: a197d99b96d69ea75a2c4a15ecd8a730dd3270d6
+          repository: dropwizard/dropwizard
+          ref: df39fdeed1d14f7b014a22db59b06bfd4e562edd
 
       - name: Changing to older version
-        run: git checkout a197d99b96d69ea75a2c4a15ecd8a730dd3270d6
+        run: git checkout df39fdeed1d14f7b014a22db59b06bfd4e562edd
 
       - name: Maven Install for dependencies
         run: mvn clean install -DskipTests
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl guava-tests -am
+        run: mvn test-compile -pl dropwizard-health -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl guava-tests test -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach
+        run: mvn -pl dropwizard-health test -Dtest=io.dropwizard.health.response.JsonHealthResponseProviderTest#shouldHandleSingleHealthStateViewCorrectly
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl guava-tests edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach -DnondexRuns=10  
+        run: mvn -pl dropwizard-health edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=io.dropwizard.health.response.JsonHealthResponseProviderTest#shouldHandleSingleHealthStateViewCorrectly -DnondexRuns=10  
