@@ -25,12 +25,6 @@ jobs:
         run: git clone https://github.com/Huawei/vCenter_Plugin_DME
 
       - run: cd vCenter_Plugin_DME
-     
-      - name: Using Given Commit Verison
-        uses: actions/checkout@v2
-        with:
-          repository: Huawei/vCenter_Plugin_DME
-          ref: fa077ef3c8ee052afc01084bc5aaae7c3b4518a4
 
       - run: ls
           
