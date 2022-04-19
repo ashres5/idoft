@@ -22,27 +22,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Test Project Repo
-        run: git clone https://github.com/google/guava
+        run: git clone https://github.com/wildfly/wildfly
 
-      - run: cd guava
+      - run: cd wildfly
      
       - name: Checkout project
         uses: actions/checkout@v2
         with:
-          repository: google/guava
-          ref: a197d99b96d69ea75a2c4a15ecd8a730dd3270d6
+          repository: wildfly/wildfly
+          ref: b19048b72669fc0e96665b1b125dc1fda21f5993
 
       - name: Maven Install for dependencies
         run: mvn install -DskipTests
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl guava-tests -am
-
-      - name: Maven Clean
-        run: mvn clean
+        run: mvn test-compile -pl dist -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl guava-tests test -Dtest=com.google.common.collect.FilteredCollectionsTestUtil$SetsFilterHashSetTest#testForEach
+        run: mvn -pl dist test -Dtest=org.wildfly.dist.subsystem.xml.StandardConfigsXMLValidationUnitTestCase#testStandaloneMinimalistic
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl guava-tests edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.google.common.collect.FilteredCollectionsTestUtil$SetsFilterHashSetTest#testForEach -DnondexRuns=10  
+        run: mvn -pl dist edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=org.wildfly.dist.subsystem.xml.StandardConfigsXMLValidationUnitTestCase#testStandaloneMinimalistic -DnondexRuns=10  
