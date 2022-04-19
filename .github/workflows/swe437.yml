@@ -13,11 +13,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-
-  job1:
-      runs-on: ubuntu-latest
-
-      steps:
         - name: Cloning test
           run: git clone https://github.com/espertechinc/esper
         - name: Going to Test Project
