@@ -19,9 +19,6 @@ jobs:
       - name: Going to Test Project
         shell: bash
         run: cd esper
-      - name: 'SWE_437 Compiling'
-        shell: bash
-        run: mvn test-compile -pl regression-run -am
       - name: Point directory
         shell: bash
         run:  pwd
@@ -31,6 +28,9 @@ jobs:
       - name: Print current commint
         shell: bash
         run:  git rev-parse HEAD
+      - name: 'SWE_437 Compiling'
+        shell: bash
+        run: mvn test-compile -pl regression-run -am
       - name: 'SWE_437 Check Without NonDex'
         shell: bash
         run:  mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -Drat.skip
