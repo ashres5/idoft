@@ -31,6 +31,9 @@ jobs:
         with:
           repository: google/guava
           ref: a197d99b96d69ea75a2c4a15ecd8a730dd3270d6
+
+      - name: Maven Install for dependencies
+        run: mvn install -DskipTests
           
       - name: SWE_437 Compiling
         run: mvn test-compile -pl guava-tests -am
