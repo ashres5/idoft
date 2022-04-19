@@ -37,6 +37,9 @@ jobs:
           
       - name: SWE_437 Compiling
         run: mvn test-compile -pl guava-tests -am
+
+      - name: Maven Clean
+        run: mvn clean
         
       - name: SWE_437 Check Without NonDex
         run: mvn -pl guava-tests test -Dtest=com.google.common.collect.FilteredCollectionsTestUtil$SetsFilterHashSetTest#testForEach
