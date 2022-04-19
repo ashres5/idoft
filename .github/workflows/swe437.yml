@@ -39,7 +39,7 @@ jobs:
         run: mvn test-compile -pl guava-tests -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl guava-tests test -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach
+        run: mvn -pl guava-tests test -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach -DfailIfNoTests=false
         
       - name: SWE_437 Check With NonDex
         run: mvn -pl guava-tests edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach -DnondexRuns=10  
