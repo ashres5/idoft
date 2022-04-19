@@ -14,7 +14,8 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-    steps:
+  change:
+    runs-on: ubuntu-latest
       - name: Cloning test
         run: git clone https://github.com/espertechinc/esper
       - name: Going to Test Project
@@ -26,6 +27,8 @@ jobs:
       - name: Print current commint
         run:  git rev-parse HEAD
 
+  test:
+    runs-on: ubuntu-latest
     steps:
       - name: 'SWE_437 Compiling'
         run: mvn test-compile -pl regression-run -am
