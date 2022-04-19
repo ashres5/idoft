@@ -14,8 +14,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-job1:
-  build:
+  job1:
       runs-on: ubuntu-latest
 
       steps:
@@ -30,8 +29,7 @@ job1:
         - name: Print current commint
           run:  git rev-parse HEAD
 
-job2:
-  build:
+  job2:
     runs-on: ubuntu-latest
 
       steps:
