@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Test Project Repo
-        run: https://github.com/Huawei/vCenter_Plugin_DME
+        run: git clone https://github.com/Huawei/vCenter_Plugin_DME
 
       - run: cd vCenter_Plugin_DME
      
