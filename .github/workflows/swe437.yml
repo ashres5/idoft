@@ -24,6 +24,9 @@ jobs:
         run: mvn test-compile -pl regression-run -am
       - name: 'SWE_437 Check Without NonDex'
         shell: bash
+        run:  pwd
+        run:  ls
+        run:  git rev-parse HEAD
         run:  mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -Drat.skip
       - name: 'SWE_437 Check With NonDex'
         shell: bash
