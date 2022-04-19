@@ -33,10 +33,10 @@ jobs:
           ref: 68fcda9dd2ca2181eb897e10ca02fa5bc3a3099f
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl core/server/worker -am
+        run: mvn test-compile -pl worker -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl core/server/worker test -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited -Drat.skip
+        run: mvn -pl worker test -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -Drat.skip
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl core/server/worker -DnondexRuns=10 dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited -DnondexRuns=10  
+        run: mvn -pl worker dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -DnondexRuns=10  
