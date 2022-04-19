@@ -22,17 +22,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Test Project Repo
-        run: git clone https://github.com/Huawei/vCenter_Plugin_DME
+        run: git clone https://github.com/google/guava
 
-      - run: cd vCenter_Plugin_DME
+      - run: cd guava
+     
+      - name: Checkout project
+        uses: actions/checkout@v2
+        with:
+          repository: Huawei/vCenter_Plugin_DME
+          ref: a197d99b96d69ea75a2c4a15ecd8a730dd3270d6
 
-      - run: ls
+      - run: 
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl dmestore-service -am
+        run: mvn test-compile -pl guava-test -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl dmestore-service test -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup -Drat.skip
+        run: mvn -pl guava-test test -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup -DnondexRuns=10  
+        run: mvn -pl guava-test edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach -DnondexRuns=10  
