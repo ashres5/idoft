@@ -24,7 +24,7 @@ jobs:
       - name: Clone Test Project Repo
         run: git clone https://github.com/Alluxio/alluxio
 
-      - run: cd alluxio/core/server/worker
+      - run: cd alluxio
      
       - name: Using Given Commit Verison
         uses: actions/checkout@v2
@@ -33,10 +33,10 @@ jobs:
           ref: 68fcda9dd2ca2181eb897e10ca02fa5bc3a3099f
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl worker -am
+        run: mvn test-compile -pl core/server/worker -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl worker test -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -Drat.skip
+        run: mvn -pl core/server/worker test -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -Drat.skip
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl worker dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -DnondexRuns=10  
+        run: mvn -pl core/server/worker dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -DnondexRuns=10  
