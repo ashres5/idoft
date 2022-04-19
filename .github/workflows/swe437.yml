@@ -24,7 +24,7 @@ jobs:
       - name: Clone Test Project Repo
         run: git clone https://github.com/Alluxio/alluxio
              
-      - run: cd esper
+      - run: cd core/server/worker
      
       - name: Using Given Commit Verison
         uses: actions/checkout@v2
