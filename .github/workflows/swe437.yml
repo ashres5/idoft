@@ -17,29 +17,26 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-          
-      - name: Get 10 random tests
-        run: grep ,ID,, pr-data.csv | grep -v \\[ | shuf --random-source=<(while :; do echo ashres5@gmu.edu; done) | head    
       
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone first test's repo
+      - name: Clone Test Project Repo
         run: git clone https://github.com/espertechinc/esper
              
       - run: cd esper
      
-      - name: Checkout the latest commit
+      - name: Using Given Commit Verison
         uses: actions/checkout@v2
         with:
           repository: espertechinc/esper
           ref: 590fa9c9eb854f1420b9d337b802aca19f963cc0
           
-      - name: Compile the module
+      - name: SWE_437 Compiling
         run: mvn test-compile -pl regression-run -am
         
-      - name: A Passing Test
+      - name: SWE_437 Check Without NonDex
         run: mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF
         
-      - name: A failing test with NonDex tool
+      - name: SWE_437 Check With NonDex
         run: mvn -pl regression-run dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -DnondexRuns=10  
