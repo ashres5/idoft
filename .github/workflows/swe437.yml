@@ -23,10 +23,8 @@ jobs:
     steps:
       - name: Clone Test Project Repo
         run: git clone https://github.com/Alluxio/alluxio
-             
-      - run: ls
-      
-      - run: cd core/server/worker
+
+      - run: cd alluxio/core/server/worker
      
       - name: Using Given Commit Verison
         uses: actions/checkout@v2
