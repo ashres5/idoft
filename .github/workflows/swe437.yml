@@ -25,6 +25,9 @@ jobs:
       - name: Show current directory files
         shell: bash
         run:  ls
+      - name: Going to Test Project
+        shell: bash
+        run: cd esper
       - name: Print current commint
         shell: bash
         run:  git rev-parse HEAD
