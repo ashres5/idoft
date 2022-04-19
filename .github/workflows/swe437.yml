@@ -32,12 +32,6 @@ jobs:
           repository: dropwizard/dropwizard
           ref: df39fdeed1d14f7b014a22db59b06bfd4e562edd
 
-      - name: Changing to older version
-        run: git checkout df39fdeed1d14f7b014a22db59b06bfd4e562edd
-
-      - name: Build Maven
-        run: mvn install
-
       - name: SWE_437 Compiling
         run: mvn test-compile -pl dropwizard-health -am
         
