@@ -22,21 +22,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Test Project Repo
-        run: git clone https://github.com/Alluxio/alluxio
+        run: https://github.com/Huawei/vCenter_Plugin_DME
 
-      - run: cd alluxio
+      - run: cd vCenter_Plugin_DME
      
       - name: Using Given Commit Verison
         uses: actions/checkout@v2
         with:
-          repository: Alluxio/alluxio
-          ref: 68fcda9dd2ca2181eb897e10ca02fa5bc3a3099f
+          repository: Huawei/vCenter_Plugin_DME
+          ref: fa077ef3c8ee052afc01084bc5aaae7c3b4518a4
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl core/server/worker -am
+        run: mvn test-compile -pl dmestore-service -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl core/server/worker test -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -Drat.skip
+        run: mvn -pl dmestore-service test -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup -Drat.skip
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl core/server/worker dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=alluxio.worker.block.BlockMetadataViewTest#sameTierViewsBelow -DnondexRuns=10  
+        run: mvn -pl dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.huawei.dmestore.services.DmeAccessServiceImplTest#testCreateHostGroup -DnondexRuns=10  
