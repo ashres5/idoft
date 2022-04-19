@@ -22,11 +22,17 @@ jobs:
       - name: 'SWE_437 Compiling'
         shell: bash
         run: mvn test-compile -pl regression-run -am
-      - name: 'SWE_437 Check Without NonDex'
+      - name: Point directory
         shell: bash
         run:  pwd
+      - name: Show current directory files
+        shell: bash
         run:  ls
+      - name: Print current commint
+        shell: bash
         run:  git rev-parse HEAD
+      - name: 'SWE_437 Check Without NonDex'
+        shell: bash
         run:  mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -Drat.skip
       - name: 'SWE_437 Check With NonDex'
         shell: bash
