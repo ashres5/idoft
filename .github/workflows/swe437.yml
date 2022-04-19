@@ -33,10 +33,10 @@ jobs:
           ref: a197d99b96d69ea75a2c4a15ecd8a730dd3270d6
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl guava-test -am
+        run: mvn test-compile -pl guava-tests -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl guava-test test -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach
+        run: mvn -pl guava-tests test -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl guava-test edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach -DnondexRuns=10  
+        run: mvn -pl guava-tests edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.google.common.collect.FilteredCollectionsTest$SetsFilterHashSetTest#testForEach -DnondexRuns=10  
