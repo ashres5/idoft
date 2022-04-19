@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone Test Project Repo
-        run: git clone https://github.com/espertechinc/esper
+        run: git clone https://github.com/Alluxio/alluxio
              
       - run: cd esper
      
@@ -30,13 +30,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: espertechinc/esper
-          ref: 590fa9c9eb854f1420b9d337b802aca19f963cc0
+          ref: 68fcda9dd2ca2181eb897e10ca02fa5bc3a3099f
           
       - name: SWE_437 Compiling
-        run: mvn test-compile -pl regression-run -am
+        run: mvn test-compile -pl core/server/worker -am
         
       - name: SWE_437 Check Without NonDex
-        run: mvn -pl regression-run test -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF
+        run: mvn -pl core/server/worker test -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited -Drat.skip
         
       - name: SWE_437 Check With NonDex
-        run: mvn -pl regression-run dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=com.espertech.esper.regressionrun.suite.infra.TestSuiteInfraNWTable#testInfraNWTableInfraFAF -DnondexRuns=10  
+        run: mvn -pl core/server/worker -DnondexRuns=10 dmestore-service edu.illinois:nondex-maven-plugin:1.1.2:nondex -Dtest=org.springframework.data.r2dbc.core.R2dbcEntityTemplateUnitTests#shouldUpdateCorrectlyVersionedAndAudited -DnondexRuns=10  
